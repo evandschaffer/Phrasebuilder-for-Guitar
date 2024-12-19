@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Scale {
-  private int[] intervals;
+  private int[] intervals; //number of semitones between notes
   private String name;
   private String key;
   private String[] scaleNotes;
