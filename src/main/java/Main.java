@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Main {
   public static void main(String[] args) {
     //scale test
@@ -9,8 +7,8 @@ public class Main {
     for (int i = 0; i < cMaj.getScaleNotes().length; i++) {
       System.out.println(cMaj.getScaleNotes()[i]);
     } //scale test
-    
-    JFrame gui = new JFrame();
-    gui.setSize(500, 300);
+
+    //logic test
+    Note note = new Note("a", true, 4, false, null);
   }
 }
