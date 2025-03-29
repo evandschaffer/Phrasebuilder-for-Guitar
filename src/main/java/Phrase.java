@@ -72,7 +72,7 @@ public class Phrase {
   
   private Note[] buildPhrase() {
     if (isLead) {
-      Lick phrase = new Lick(this.scale, this.tSig, this.ap, this.isChr, this.root);
+      Lick phrase = new Lick(this.scale, this.tSig, this.isChr, this.root);
       return phrase.getNotes();
     } else {
       Riff phrase = new Riff(this.scale, this.tSig, this.ap, this.isChr, this.root);

@@ -11,9 +11,9 @@ public class Note {
     this.triplet = triplet;
     this.chordNote = chordNote.toLowerCase();
     if (triplet) {
-      this.beats = 4.0/noteType*(2.0/3.0);
+      this.beats = 4.0f/noteType*(2.0f/3.0f);
     } else {
-      this.beats = 4.0/noteType;
+      this.beats = 4.0f/noteType;
     }
   }
   
@@ -49,9 +49,9 @@ public class Note {
 
   public void setBeats(int noteType, boolean triplet) {
     if (triplet) {
-      this.beats = 4.0/noteType*(2.0/3.0);
+      this.beats = 4.0f/noteType*(2.0f/3.0f);
     } else {
-      this.beats = 4.0/noteType;
+      this.beats = 4.0f/noteType;
     } this.triplet = triplet;
   }
 
