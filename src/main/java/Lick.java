@@ -69,11 +69,9 @@ public class Lick {
     } else {
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0), false, null);
     }
-    for (int i = 0; i < notes.length; i++) {
-      notes[i] = null;
-    }
     return null;
   }
+
 
   public void regenerate() {
     this.noteLengthOrder = determineOrder();
