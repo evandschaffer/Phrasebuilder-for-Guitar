@@ -61,6 +61,7 @@ public class Lick {
   }
 
   private Note[] buildLick() {
+    boolean newNote; //ensure no repeat notes
     Note[] notes = new Note[noteLengthOrder.size()];
     if (noteLengthOrder.get(0) % 10 == 0) { //first note must be root
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0)/10, true, null); 
@@ -68,10 +69,17 @@ public class Lick {
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0), false, null);
     }
     for (int i = 1; i < notes.length; i++) {
-      if (noteLengthOrder.get(i) % 10 == 0) {
-
-      } else {
-        
+      newNote = false;
+      while (!newNote) {
+        int rand = ThreadLocalRandom.current().nextInt(1, scale.getScaleNotes().length); //random note within scale
+        if (noteLengthOrder.get(i) % 10 == 0) {
+          notes[i] = new Note(scale.getScaleNotes()[rand], false, noteLengthOrder.get(i)/10, true, null);
+        } else {
+          notes[i] = new Note(scale.getScaleNotes()[rand], false, noteLengthOrder.get(i), false, null);
+        }
+        if (notes[i-1].getNote() != notes[i].getNote()) {
+          newNote = true;
+        } 
       }
     }
     return null;
