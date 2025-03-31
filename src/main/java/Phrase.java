@@ -1,16 +1,14 @@
 public class Phrase {
   private Scale scale;
-  private int[] tSig; // [12,8] = 12/8
+  private int[] tSig; //{12,8} = 12/8
   private String ap; //accent pattern
-  private boolean isChr; //chromaticism
   private boolean isLead; //riff vs lick
   private Note[] notes;
 
-  public Phrase(Scale scale, int[] tSig, String ap, boolean isChr, boolean isLead) {
+  public Phrase(Scale scale, int[] tSig, String ap, boolean isLead) {
     this.scale = scale;
     this.tSig = tSig;
     this.ap = ap;
-    this.isChr = isChr;
     this.isLead = isLead;
     this.notes = this.buildPhrase();
   }
@@ -25,10 +23,6 @@ public class Phrase {
 
   public String getAp() {
     return this.ap;
-  }
-
-  public boolean getIsChr() {
-    return this.isChr;
   }
 
   public boolean getIsLead() {
@@ -51,12 +45,8 @@ public class Phrase {
     this.ap = ap;
   }
 
-  public void setIsChr(boolean isChr) {
-    this.isChr = isChr;
-  }
-
   public void setIsLead(boolean isLead) {
-    this.isChr = isLead;
+    this.isLead = isLead;
   }
 
   public void setNotes(Note[] notes) {
@@ -65,10 +55,10 @@ public class Phrase {
   
   private Note[] buildPhrase() {
     if (isLead) {
-      Lick phrase = new Lick(this.scale, this.tSig, this.isChr);
+      Lick phrase = new Lick(this.scale, this.tSig);
       return phrase.getNotes();
     } else {
-      Riff phrase = new Riff(this.scale, this.tSig, this.ap, this.isChr);
+      Riff phrase = new Riff(this.scale, this.tSig, this.ap);
       return phrase.getNotes();
     }
   }

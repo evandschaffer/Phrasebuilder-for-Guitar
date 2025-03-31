@@ -4,14 +4,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Lick {
   private Scale scale;
   private int[] tSig; // {[12,8} = 12/8
-  private boolean isChr; // chromaticism
   private Note[] notes;
   private ArrayList<Integer> noteLengthOrder;
 
-  public Lick(Scale scale, int[] tSig, boolean isChr) {
+  public Lick(Scale scale, int[] tSig) {
     this.scale = scale;
     this.tSig = tSig;
-    this.isChr = isChr;
     this.noteLengthOrder = determineOrder();
     this.notes = buildLick();
   }
@@ -68,6 +66,13 @@ public class Lick {
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0)/10, true, null); 
     } else {
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0), false, null);
+    }
+    for (int i = 1; i < notes.length; i++) {
+      if (noteLengthOrder.get(i) % 10 == 0) {
+
+      } else {
+        
+      }
     }
     return null;
   }
