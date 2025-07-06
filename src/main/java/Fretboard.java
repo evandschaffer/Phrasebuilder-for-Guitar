@@ -8,7 +8,7 @@ public class Fretboard {
     {"e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b", "c", "c#", "d", "d#", "e"}
   };
 
-  public String[][] getTabs(Note[] notes) {
+  public int[] getTabs(Note[] notes) { //[string, fret]
     return null;
   }
 }

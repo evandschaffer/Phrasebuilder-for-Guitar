@@ -9,7 +9,11 @@ public class Note {
     this.note = note.toLowerCase();
     this.pm = pm;
     this.triplet = triplet;
-    this.chordNote = chordNote.toLowerCase();
+    if (chordNote == null) {
+      this.chordNote = chordNote;
+    } else {
+      this.chordNote = chordNote.toLowerCase();
+    }
     if (triplet) {
       this.beats = 4.0f/noteType*(2.0f/3.0f);
     } else {

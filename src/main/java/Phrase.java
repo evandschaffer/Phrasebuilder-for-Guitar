@@ -48,7 +48,7 @@ public class Phrase {
       Lick phrase = new Lick(this.scale, this.tSig);
       return phrase.getNotes();
     } else {
-      Riff phrase = new Riff(this.scale, this.tSig, this.ap);
+      Riff phrase = new Riff(this.scale, this.tSig);
       return phrase.getNotes();
     }
   }

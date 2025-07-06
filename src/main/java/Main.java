@@ -10,5 +10,7 @@ public class Main {
 
     //logic test
     Note note = new Note("a", true, 4, false, null);
+
+    UserInterface gui = new UserInterface();
   }
 }
