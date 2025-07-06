@@ -21,7 +21,7 @@ public class Lick {
   private ArrayList<Integer> determineOrder() {
     int defaultNoteLength = tSig[1];
     float beats = 0; //increments with each note
-    float goalBeats = (float) tSig[0] / defaultNoteLength * 4; // refactor to put time signature over 4
+    float goalBeats = (float) tSig[0] / defaultNoteLength * 4; //refactor to put time signature over 4
     ArrayList<Integer> noteLengthOrder = new ArrayList<Integer>();
     while (beats < goalBeats) {
       if (goalBeats - beats <= 4.0f / defaultNoteLength) { //finish phrase cleanly

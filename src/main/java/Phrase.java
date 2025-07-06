@@ -1,14 +1,12 @@
 public class Phrase {
   private Scale scale;
   private int[] tSig; //{12,8} = 12/8
-  private String ap; //accent pattern
   private boolean isLead; //riff vs lick
   private Note[] notes;
 
-  public Phrase(Scale scale, int[] tSig, String ap, boolean isLead) {
+  public Phrase(Scale scale, int[] tSig, boolean isLead) {
     this.scale = scale;
     this.tSig = tSig;
-    this.ap = ap;
     this.isLead = isLead;
     this.notes = this.buildPhrase();
   }
