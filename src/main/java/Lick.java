@@ -71,7 +71,7 @@ public class Lick {
     for (int i = 1; i < notes.length; i++) {
       newNote = false;
       while (!newNote) {
-        int rand = ThreadLocalRandom.current().nextInt(1, scale.getScaleNotes().length); //random note within scale
+        int rand = ThreadLocalRandom.current().nextInt(0, scale.getScaleNotes().length); //random note within scale
         if (noteLengthOrder.get(i) % 10 == 0) {
           notes[i] = new Note(scale.getScaleNotes()[rand], false, noteLengthOrder.get(i)/10, true, null);
         } else {
@@ -82,7 +82,7 @@ public class Lick {
         } 
       }
     }
-    return null;
+    return notes;
   }
 
 

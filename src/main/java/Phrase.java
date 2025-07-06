@@ -19,10 +19,6 @@ public class Phrase {
     return this.tSig;
   }
 
-  public String getAp() {
-    return this.ap;
-  }
-
   public boolean getIsLead() {
     return this.isLead;
   }
@@ -37,10 +33,6 @@ public class Phrase {
 
   public void setTSig(int[] tSig) {
     this.tSig = tSig;
-  }
-
-  public void getAp(String ap) {
-    this.ap = ap;
   }
 
   public void setIsLead(boolean isLead) {
