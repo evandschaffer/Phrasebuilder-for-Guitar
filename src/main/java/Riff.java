@@ -65,10 +65,10 @@ public class Riff {
         } else if (rand == 2) { //add 2 shorter notes
           noteLengthOrder.add(new Integer[]{defaultNoteLength*2, 1});
           noteLengthOrder.add(new Integer[]{defaultNoteLength*2, 1});
-          beats += 4.0f / (defaultNoteLength);
+          beats += 4.0f / defaultNoteLength;
         } else { //add 1 shorter note
           noteLengthOrder.add(new Integer[]{defaultNoteLength*2, 0});
-          beats += 4.0f / (defaultNoteLength);
+          beats += 4.0f / (defaultNoteLength*2);
         }
       }
     }
