@@ -9,7 +9,7 @@ public class UserInterface {
       frame.setSize(1080, 720);
       frame.setResizable(false);
       frame.setVisible(true);
-      ImageIcon image = new ImageIcon("C:\\Users\\Boyos\\Desktop\\Java Projects\\Phrasebuilder\\Phrasebuilder-for-Guitar-main\\PB.png");
+      ImageIcon image = new ImageIcon("PB.png");
       frame.setIconImage(image.getImage());
     }
 }
