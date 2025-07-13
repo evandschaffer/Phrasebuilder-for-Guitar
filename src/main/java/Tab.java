@@ -58,7 +58,7 @@ public class Tab {
     for (int i = 0; i < trueFb.size(); i++) {
       for (int j = 0; j < trueFb.get(i).length; j++) {
         if (trueFb.get(i)[j].equals(noteName)) {
-          potentialTabs.add(new TabNote(i + range[2] - 1, j + range[0]));
+          potentialTabs.add(new TabNote(i + range[2], j + range[0]));
         }
       }
     }
@@ -67,32 +67,33 @@ public class Tab {
 
   public TabNote[] tabOut() {
     ArrayList<String[]> trueFb = new ArrayList<String[]>();
-    ArrayList<TabNote> potentialPrimary = getOptions(trueFb, note.getNote());
     for(int i = range[2] - 1; i < range[3]; i++) {
       trueFb.add(Arrays.copyOfRange(fb[i], range[0], range[1]));
     }
+    ArrayList<TabNote> potentialPrimary = getOptions(trueFb, note.getNote());
     TabNote primary = null;
-    TabNote secondary = null;
     if (beforeTabNote == null) { //first note
       primary = potentialPrimary.get(0);
     } else {
       int[] scores = new int[potentialPrimary.size()];
       for (int i = 0; i < potentialPrimary.size(); i++) { 
-        //one point for being less than four frets away, two points for being less than three frets away
+        //one point for being less than four frets away, two points for being less than three frets away, three points for being less than two frets away
         if (beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() > -4 && beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() < 4) {
           scores[i] ++;
           if (beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() > -3 && beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() < 3) {
             scores[i] ++;
+            if (beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() > -2 && beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() < 2) {
+              scores[i] ++;
+            }
           }
+        } else {
+          scores[i] = 0; //if not within four frets, score is zero
         }
-        //one point for being less than 3 strings away, two points for being one string away, three points for being the same string
+        //one point for being less than 3 strings away, two points for less than 2 strings away
         if (beforeTabNote[0].getStr() - potentialPrimary.get(i).getStr() > -3 && beforeTabNote[0].getStr() - potentialPrimary.get(i).getStr() < 3) {
           scores[i] ++;
           if (beforeTabNote[0].getStr() - potentialPrimary.get(i).getStr() > -2 && beforeTabNote[0].getStr() - potentialPrimary.get(i).getStr() < 2) {
             scores[i] ++;
-            if (beforeTabNote[0].getStr() - potentialPrimary.get(i).getStr() == 0) {
-              scores[i] ++;
-            }
           }
         }
       }
@@ -112,8 +113,12 @@ public class Tab {
       primary = potentialPrimary.get(highScorers.get(rand));
     }
     if (note.getChordNote() != null) { //if this is a double stop
-      trueFb.remove(primary.getStr() - range[0] + 1);
       ArrayList<TabNote> potentialSecondary = getOptions(trueFb, note.getChordNote());
+      for (int i = 0; i < potentialSecondary.size(); i++) {
+        if (potentialSecondary.get(i).getStr() == primary.getStr()) {
+          potentialSecondary.remove(i); //remove same string options
+        }
+      }
       int[] scores = new int[potentialSecondary.size()];
       for (int i = 0; i < potentialSecondary.size(); i++) { 
         //one point for being less than four frets away, two points for being less than three frets away
@@ -152,7 +157,7 @@ public class Tab {
 
   public void print() {
     for (int i = 0; i < tabNote.length; i++) {
-      System.out.println(tabNote[i].getStr() + " , " + tabNote[i].getFret());
+      System.out.println(tabNote[i].getStr() + ", " + tabNote[i].getFret());
     }
   }
 }

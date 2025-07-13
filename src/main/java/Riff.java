@@ -83,7 +83,7 @@ public class Riff {
       notes[0] = new Note(scale.getScaleNotes()[0], false, noteLengthOrder.get(0)[0], false, chordInterval(0));
     }
     for (int i = 1; i < notes.length; i++) {
-      int rand = ThreadLocalRandom.current().nextInt(0, scale.getScaleNotes().length);
+      int rand = ThreadLocalRandom.current().nextInt(0, scale.getScaleNotes().length); //random note within scale
       int rand2 = ThreadLocalRandom.current().nextInt(0, 2); //random number 0-1
       String chordNote;
       if (rand2 > 0) { //allow chords
@@ -95,10 +95,10 @@ public class Riff {
         if (rand2 == 0) {
           notes[i] = new Note(scale.getScaleNotes()[0], true, noteLengthOrder.get(i)[0], false, null); //make palm muted notes more likely to be the root
         } else {
-          notes[i] = new Note(scale.getScaleNotes()[i], true, noteLengthOrder.get(i)[0], false, null);
+          notes[i] = new Note(scale.getScaleNotes()[rand], true, noteLengthOrder.get(i)[0], false, null);
         }
       } else {
-        notes[i] = new Note(scale.getScaleNotes()[i], false, noteLengthOrder.get(i)[0], false, chordNote);
+        notes[i] = new Note(scale.getScaleNotes()[rand], false, noteLengthOrder.get(i)[0], false, chordNote);
       }
     }
     return notes;
