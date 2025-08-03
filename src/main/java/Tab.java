@@ -77,6 +77,7 @@ public class Tab {
     } else {
       int[] scores = new int[potentialPrimary.size()];
       for (int i = 0; i < potentialPrimary.size(); i++) { 
+        System.out.println("Potential: " + potentialPrimary.get(i).getStr() + ", " + potentialPrimary.get(i).getFret());
         //one point for being less than four frets away, two points for being less than three frets away, three points for being less than two frets away
         if (beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() > -4 && beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() < 4) {
           scores[i] ++;
