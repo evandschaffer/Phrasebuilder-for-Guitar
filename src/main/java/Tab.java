@@ -45,12 +45,16 @@ public class Tab {
   public Tab(Note note, int[] range, TabNote[] beforeTabNote) {
     this.note = note;
     this.range = range;
-    this.tabNote = tabOut();
     this.beforeTabNote = beforeTabNote;
+    this.tabNote = tabOut();
   }
 
   public TabNote[] getTabNote() {
     return tabNote;
+  }
+
+  public TabNote[] getBeforeTabNote() {
+    return beforeTabNote;
   }
 
   private ArrayList<TabNote> getOptions(ArrayList<String[]> trueFb, String noteName) {
@@ -77,7 +81,6 @@ public class Tab {
     } else {
       int[] scores = new int[potentialPrimary.size()];
       for (int i = 0; i < potentialPrimary.size(); i++) { 
-        System.out.println("Potential: " + potentialPrimary.get(i).getStr() + ", " + potentialPrimary.get(i).getFret());
         //one point for being less than four frets away, two points for being less than three frets away, three points for being less than two frets away
         if (beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() > -4 && beforeTabNote[0].getFret() - potentialPrimary.get(i).getFret() < 4) {
           scores[i] ++;
