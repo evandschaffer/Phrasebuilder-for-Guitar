@@ -1,34 +1,52 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UserInterface {
+  private JFrame frame;
+  private JLabel pageLabel;
+  private JLabel introLabel;
     public UserInterface() {
-      JFrame frame = new JFrame();
+      this.frame = new JFrame();
       frame.setTitle("Phrasebuilder");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(1080, 720);
       frame.setResizable(false);
       ImageIcon image = new ImageIcon("PB.png");
       frame.setIconImage(image.getImage());
-      frame.setLayout(new GridLayout(8,24));
 
-      JLabel label = new JLabel();
-      label.setText("Welcome to Phrasebuilder for Guitar!");
-      label.setHorizontalAlignment(JLabel.CENTER);
-      label.setVerticalAlignment(JLabel.TOP);
-      frame.add(label);
+      this.pageLabel = new JLabel();
+      pageLabel.setText("Welcome to Phrasebuilder for Guitar!");
+      pageLabel.setHorizontalAlignment(JLabel.CENTER);
+      pageLabel.setVerticalAlignment(JLabel.TOP);
+      frame.add(pageLabel);
 
       JButton start = new JButton("START");
-      start.setBounds(0, 0, 0, 0);
       frame.add(start);
+      Box leftSpace = new Box(1); leftSpace.createHorizontalStrut(50);
 
+      start.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          switchPage(1);
+          System.out.println("Start clicked");
+        }
+      });
+
+      this.introLabel = new JLabel();
+      introLabel.setText("This program uses procedural generation to create guitar phrases based on user settings. Select start to begin.");
+      introLabel.setHorizontalAlignment(JLabel.CENTER);
+      introLabel.setVerticalAlignment(JLabel.BOTTOM);
+      frame.add(introLabel);
 
       frame.setVisible(true);
     }
+
   private void switchPage(int page) {
     switch(page) {
       case 1:
-        //scale selection
+        pageLabel.setText("Scale settings");
         break;
       case 2:
         //phrase settings
